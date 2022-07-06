@@ -24,8 +24,14 @@ def _sizeof_fmt(num, suffix="B"):
 
 
 def get_summary_rss(ps_output_file_path: str) -> str:
-    """put your code here"""
+    total_memory = 0
+    with open(ps_output_file_path, 'r') as file:
+        for string in file:
+            string = string.split()
+            if string[5].isdigit():
+                total_memory += int(string[5])
+    return _sizeof_fmt(total_memory)
 
 
 if __name__ == "__main__":
-    print(get_summary_rss("<place ps aux output file path here>"))
+    print(get_summary_rss(os.path.abspath('output_file.txt')))

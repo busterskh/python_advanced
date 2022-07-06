@@ -26,7 +26,21 @@
 1....................... -> <пустая строка>
 
 """
+cipher = 'абра--..кадабра'
 
 
 def decrypt(s: str) -> str:
-    """Put your code here"""
+    message = ''
+    count = 0
+    for i in s[::-1]:
+        if i != '.' and count < 2:
+            message = i + message
+            count = 0
+        elif i == '.':
+            count += 1
+        elif count >= 2:
+            count -= 2
+    return message
+
+
+print(decrypt(cipher))
