@@ -12,26 +12,47 @@
 YYYYMMDD , где YYYY -- год, MM -- месяц (число от 1 до 12), DD -- число (от 01 до 31)
 Гарантируется, что переданная дата -- корректная (никаких 31 февраля)
 """
+import time
 from flask import Flask
 
 app = Flask(__name__)
 
-storage = {}
+storage = dict()
 
 
 @app.route("/add/<date>/<int:number>")
 def add(date: str, number: int):
-    # put something here
+    global storage
+    date = (date[:4], date[4:6], date[6:])
+    try:
+        _ = time.strptime('/'.join(date), '%Y/%m/%d')
+        storage[date] = storage.get(date, 0) + number
+        return f'Запись внесена! {date}'
+    except ValueError:
+        return 'Введенная дата не корректна. Введите дату в формате YYYYMMDD'
 
 
 @app.route("/calculate/<int:year>")
 def calculate_year(year: int):
-    # put something here
+    total_summ = 0
+    for key, value in storage.items():
+        if year == int(key[0]):
+            total_summ += value
+
+    if total_summ > 0:
+        return f'Общая сумма потраченная за {year} год: {total_summ}'
 
 
 @app.route("/calculate/<int:year>/<int:month>")
 def calculate_month(year: int, month: int):
-    # put something here
+    total_summ = 0
+    for key, value in storage.items():
+        if year == int(key[0]):
+            if month == int(key[1]):
+                total_summ += value
+
+    if total_summ > 0:
+        return f'Общая сумма потраченная за {month} месяц {year} года: {total_summ}'
 
 
 if __name__ == "__main__":

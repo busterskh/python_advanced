@@ -22,7 +22,6 @@ PS в python абсолютный путь до файла можно узнат
 
 """
 import os
-
 from flask import Flask
 
 app = Flask(__name__)
@@ -30,7 +29,17 @@ app = Flask(__name__)
 
 @app.route("/head_file/<int:size>/<path:relative_path>")
 def head_file(size: int, relative_path: str):
-    """put your code here"""
+    abs_path = os.path.join('/', relative_path)
+    if os.path.exists(abs_path):
+        with open(abs_path, 'r', encoding='utf-8') as file:
+            text = file.read()
+            result_text = text[:size]
+        result_size = len(text)
+        return f'<b>{abs_path}</b> {result_size}<br>{result_text}'
+    else:
+        return f'<b>Файла не существует или путь недействительный.</b><br>' \
+               f'Проверьте правильность введенного пути:<br>' \
+               f'<i>{abs_path}</i>'
 
 
 if __name__ == "__main__":

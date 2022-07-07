@@ -7,8 +7,18 @@ import os
 
 
 def get_mean_size(ls_output_path: str) -> float:
-    """Put your code here"""
+    total_size = 0
+    count_file = 0
+    with open(ls_output_path, 'r') as file:
+        for string in file:
+            string = string.split()
+            if len(string) > 5:
+                total_size += int(string[4])
+                count_file += 1
+
+    result = (total_size / count_file) if count_file > 0 else 0
+    return result
 
 
 if __name__ == "__main__":
-    print(get_mean_size("<place ls output file path here>"))
+    print(get_mean_size(os.path.abspath('output_ls.txt')))

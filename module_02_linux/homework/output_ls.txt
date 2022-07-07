@@ -1,0 +1,11 @@
+total 312
+drwxr-xr-x@ 3 vlad  staff     96 Jul  6 10:49 __pycache__
+-rw-r--r--  1 vlad  staff   1025 Jul  6 10:49 hw_2_1_max_number.py
+-rw-r--r--  1 vlad  staff   1900 Jul  6 11:08 hw_2_2_ps_aux_rss.py
+-rw-r--r--  1 vlad  staff    675 Jul  6 11:17 hw_2_3_mean_size_ls.py
+-rw-r--r--  1 vlad  staff    682 Jul  5 21:32 hw_2_4_hello_world_with_day.py
+-rw-r--r--  1 vlad  staff   1608 Jul  5 21:32 hw_3_1.py
+-rw-r--r--  1 vlad  staff   1710 Jul  5 21:32 hw_3_2.py
+-rw-r--r--  1 vlad  staff   1997 Jul  5 21:32 hw_3_3.py
+-rw-r--r--  1 vlad  staff  71197 Jul  6 10:57 output_file.txt
+-rw-r--r--  1 vlad  staff      0 Jul  6 11:17 output_ls.txt
