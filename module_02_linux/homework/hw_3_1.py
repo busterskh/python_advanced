@@ -33,10 +33,7 @@ def head_file(size: int, relative_path: str):
     if os.path.exists(abs_path):
         with open(abs_path, 'r', encoding='utf-8') as file:
             text = file.read()
-            if len(text) < size:
-                result_text = text
-            else:
-                result_text = text[:size]
+            result_text = text[:size]
         result_size = len(text)
         return f'<b>{abs_path}</b> {result_size}<br>{result_text}'
     else:

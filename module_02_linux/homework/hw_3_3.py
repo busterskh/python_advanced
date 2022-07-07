@@ -30,6 +30,7 @@ cipher = 'абра--..кадабра'
 
 
 def decrypt(s: str) -> str:
+    s = list(s)
     message = ''
     count = 0
     for i in s[::-1]:

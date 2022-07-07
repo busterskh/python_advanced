@@ -18,8 +18,12 @@ def max_number(numbers):
     где number, максимальное переданное в endpoint число,
     выделенное курсивом.
     """
-    number = max(numbers.split('/'))
-    return f'Максимальное переданное число {number}'
+    try:
+        numbers = [int(j) for j in numbers.split('/')]
+        number = max(numbers)
+        return f'Максимальное переданное число {number}'
+    except ValueError:
+        return 'Не все введенные данные являются целыми числами.'
 
 
 if __name__ == "__main__":

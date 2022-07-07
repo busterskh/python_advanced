@@ -15,7 +15,8 @@ def get_mean_size(ls_output_path: str) -> float:
             if len(string) > 5:
                 total_size += int(string[4])
                 count_file += 1
-    result = total_size / count_file
+
+    result = (total_size / count_file) if count_file > 0 else 0
     return result
 
 
