@@ -17,7 +17,10 @@ from flask import Flask
 
 app = Flask(__name__)
 
-storage = dict()
+storage = {('2022', '01', '31'): 2000,
+                        ('2022', '02', '03'): 2000,
+                        ('2022', '03', '15'): 2000
+                        }
 
 
 @app.route("/add/<date>/<int:number>")
@@ -27,7 +30,7 @@ def add(date: str, number: int):
     try:
         _ = time.strptime('/'.join(date), '%Y/%m/%d')
         storage[date] = storage.get(date, 0) + number
-        return f'Запись внесена! {date}'
+        return f'Запись внесена!'
     except ValueError:
         return 'Введенная дата не корректна. Введите дату в формате YYYYMMDD'
 
