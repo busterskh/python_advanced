@@ -22,9 +22,9 @@ class TestFinancialAccounting(unittest.TestCase):
     def test_get_correct_calculate(self):
         responce = self.app.get('/calculate/2022')
         responce_text = responce.data.decode()
-        self.assertTrue(str(sum(storage.values())) in responce_text)
+        self.assertIn(str(sum(storage.values())), responce_text)
 
     def test_get_correct_calculate_month(self):
         responce = self.app.get('/calculate/2022/01')
         responce_text = responce.data.decode()
-        self.assertTrue(str(storage[('2022', '01', '31')]) in responce_text)
+        self.assertIn(str(storage[('2022', '01', '31')]), responce_text)

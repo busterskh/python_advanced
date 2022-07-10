@@ -15,7 +15,7 @@ class TestHelloWorldWithDay(unittest.TestCase):
         username = 'username'
         responce = self.app.get(self.base_url + username)
         responce_text = responce.data.decode()
-        self.assertTrue(username in responce_text)
+        self.assertIn(username, responce_text)
 
     def test_can_get_correct_weekdate(self):
         username = 'username'
@@ -23,4 +23,4 @@ class TestHelloWorldWithDay(unittest.TestCase):
         weekdate = day_week[datetime.datetime.today().weekday()]
         responce = self.app.get(self.base_url + username)
         responce_text = responce.data.decode()
-        self.assertTrue(weekdate in responce_text)
+        self.assertIn(weekdate, responce_text)
